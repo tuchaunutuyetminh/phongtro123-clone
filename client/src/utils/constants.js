@@ -1,9 +1,8 @@
 export const path = {
-    PUBLIC: '/',
-    HOME: '',
+    HOME: '/',
     LOGIN: 'login',
 }
 
 export const navigateItem = {
-    
+
 }
