@@ -4,18 +4,24 @@ import { useForm } from 'react-hook-form'
 import InputForm from '../../components/inputs/InputForm'
 import Button from '../../components/common/Button'
 import withBaseComponent from '../../hocs/withBaseComponent'
-
-const Login = ({location}) => {
+import {registerUser} from '../../store/auth/asyncActions'
+const Login = ({location, dispatch}) => {
   const [isRegister, setIsRegister] = useState(location.state?.flag)
-  const { register, formState: { errors }, watch, handleSubmit } = useForm()
+  const { register, formState: { errors }, handleSubmit } = useForm()
   
+  const handleSubmitForm =async(data) => { 
+    // const response = await apiRegister(data)
+    dispatch(registerUser(data))
+    console.log('data form: ', data)
+
+   }
   useEffect(() => { 
     setIsRegister(location.state?.flag)
    },[location.state?.flag])
   return (
     <div className='justify-center gap-2 bg-white min-w-[600px] p-[30px] mt-[20px] rounded-md shadow-sm'>
       <h3 className='font-semibold text-3xl'>{isRegister ? 'Tạo tài khoản mới' : 'Đăng nhập'}</h3>
-      <form className='w-full flex flex-col gap-4 pt-[18px]'>
+      <form className='w-full flex flex-col gap-4 pt-[18px]' onSubmit={handleSubmit(handleSubmitForm)}>
       { isRegister && <InputForm
           label='HỌ TÊN'
           register={register}
