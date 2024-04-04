@@ -1,8 +1,8 @@
 import * as authService from '../services/auth'
-export const register = async(req, res) => { 
-    const { name, phone, password} = req.body
+export const register = async (req, res) => {
+    const { name, phone, password } = req.body
     try {
-        if(!name || !phone || !password) return res.status(400).json({
+        if (!name || !phone || !password) return res.status(400).json({
             err: -1,
             msg: 'Missing input!'
         })
@@ -17,10 +17,10 @@ export const register = async(req, res) => {
     }
 }
 
-export const login = async(req, res) => { 
-    const { phone, password} = req.body
+export const login = async (req, res) => {
+    const { phone, password } = req.body
     try {
-        if(!phone || !password) return res.status(400).json({
+        if (!phone || !password) return res.status(400).json({
             err: -1,
             msg: 'Missing input!'
         })

@@ -11,6 +11,7 @@ import {
   REGISTER} from 'redux-persist'
 // import userSlice from './user/userSlice';
 import authSlice from './auth/authSlice';
+import appSlice from './app/appSlice';
 
 const commonConfig = {
   storage
@@ -23,7 +24,7 @@ const authConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authConfig, authSlice),
-    // user: userSlice
+    app: appSlice
   },
   middleware: (getDefaultMiddleware) =>
   getDefaultMiddleware({

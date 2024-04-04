@@ -8,6 +8,7 @@ const instance = axios.create({
 //Add a request interceptor
 instance.interceptors.request.use(function (config) {
     // Do something before request is sent
+    //gắn token vào header
     let localStorageData = window.localStorage.getItem('persist:auth')
     if(localStorageData && typeof localStorageData === 'string') {
         localStorageData = JSON.parse(localStorageData)
@@ -25,6 +26,8 @@ instance.interceptors.request.use(function (config) {
 instance.interceptors.response.use(function (response) {
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
+    //viết refresh token
+    
     return response.data;
 }, function (error) {
     // Any status codes that falls outside the range of 2xx cause this function to trigger

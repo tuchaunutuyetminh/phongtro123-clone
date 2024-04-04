@@ -5,21 +5,21 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState: {
     isLogged: false,
-    token: 'mynh',
-    msg: ''
+    token: null,
+    msg: '',
+    isLoading: false
   },
   reducers: {
     // login: (state, action) => {
     //   state.isLoggedIn = action.payload.isLoggedIn
     //   state.token = action.payload.token
     // },
-    // logout: (state, action) => {
-    //   state.isLoggedIn = false
-    //   state.current = null
-    //   state.token = null
-    //   state.isLoading = false
-    //   state.mes = ''
-    // },
+    logout: (state, action) => {
+      state.isLogged = false
+      state.token = null
+      state.isLoading = false
+      state.msg = ''
+    },
     // clearMessage: (state) => {
     //   state.mes = ''
     // },
@@ -36,17 +36,17 @@ export const authSlice = createSlice({
     // }
   },
   extraReducers: (builder) => {
-    builder.addCase(actions.registerUser.pending, (state) => {
+    builder.addCase(actions.loginUser.pending, (state) => {
       state.isLoading = true;
     });
 
-    builder.addCase(actions.registerUser.fulfilled, (state, action) => {
+    builder.addCase(actions.loginUser.fulfilled, (state, action) => {
       state.isLoading = false;
       state.isLogged = true;
       state.token = action.payload.token
     });
 
-    builder.addCase(actions.registerUser.rejected, (state, action) => {
+    builder.addCase(actions.loginUser.rejected, (state, action) => {
       state.isLoading = false;
       state.isLogged = false;
       state.token = null
@@ -55,7 +55,7 @@ export const authSlice = createSlice({
   },
 })
 
-// export const { } = userSlice.actions
+export const { logout } = authSlice.actions
 
 export default authSlice.reducer
 
