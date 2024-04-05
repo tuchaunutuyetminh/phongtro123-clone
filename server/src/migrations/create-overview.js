@@ -23,7 +23,7 @@ module.exports = {
       created: {
         type: Sequelize.DATE
       },
-      expire: {
+      expired: {
         type: Sequelize.DATE
       },
       bonus: {
