@@ -1,13 +1,13 @@
 import axios from '../utils/axios'
 
 export const apiRegister = (data) => axios({
-    url: 'register',
+    url: 'auth/register',
     method: 'post',
     data
 })
 
 export const apiLogin = (data) => axios({
-    url: 'login',
+    url: 'auth/login',
     method: 'post',
     data
 })

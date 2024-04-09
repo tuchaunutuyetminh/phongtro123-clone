@@ -71,6 +71,7 @@ const Login = ({ location, dispatch, navigate }) => {
         />
         <InputForm
           label='MẬT KHẨU'
+          type='password'
           register={register}
           errors={errors}
           id='password'

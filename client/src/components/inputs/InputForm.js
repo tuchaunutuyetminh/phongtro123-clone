@@ -8,7 +8,7 @@ const InputForm = ({label, disabled, register, errors, id, validate, type='text'
           id={id}
           placeholder={placeholder ? placeholder : ''}
           {...register(id, validate)}
-          type={type}
+          type={type || 'text'}
           className={clsx('outline-none bg-[#e8f0fe] p-2 rounded-md h-[45px]', fullWidth && 'w-full', errors[id] && 'border border-red-600' )}
         />
         {errors[id] && <small className='text-xs text-red-500'>{errors[id]?.message}</small>}

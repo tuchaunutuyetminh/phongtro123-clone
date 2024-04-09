@@ -13,6 +13,7 @@ import Swal from 'sweetalert2'
 const { FiPlusCircle } = icons
 const Header = ({ navigate, dispatch }) => {
   const { isLogged } = useSelector(state => state.auth)
+  
 
   const gotoLogin = useCallback((flag) => {
     navigate(`/${path.LOGIN}`, { state: { flag } })
@@ -30,7 +31,7 @@ const Header = ({ navigate, dispatch }) => {
     })
    }
   return (
-    <div className='w-1100 flex m-auto items-center justify-between border border-red-300'>
+    <div className='w-1100 flex m-auto items-center justify-between'>
       <Link to={`${path.HOME}`}>
         <img src={logo} alt='logo' className='w-[240px] object-cover' />
       </Link>
