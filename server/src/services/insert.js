@@ -1,19 +1,21 @@
 import db from '../models'
 import bcrypt from 'bcryptjs'
 import { v4 } from 'uuid'
-import chothuephongtro from '../../data/chothuephongtro.json'
+import nhachothue from '../../data/nhachothue.json'
 import generateCode from '../utils/generateCode'
 import label from '../models/label'
+import { Where } from 'sequelize/lib/utils'
+import { where } from 'sequelize'
 require('dotenv').config()
-const dataBody = chothuephongtro.body
+const dataBody = nhachothue.body
 //func hash password 
 const hashPassword = (password) => bcrypt.hashSync(password, bcrypt.genSaltSync(12))
 
 export const insertService = () => new Promise(async (resolve, reject) => {
     try {
-        dataBody.forEach(async(item) => { 
+        dataBody.forEach(async (item) => {
             let postId = v4()
-            let labelCode = generateCode(4)
+            let labelCode = generateCode(item?.header?.class?.classType)
             let attributesId = v4()
             let userId = v4()
             let imagesId = v4()
@@ -25,11 +27,11 @@ export const insertService = () => new Promise(async (resolve, reject) => {
                 labelCode,
                 address: item?.header?.address,
                 attributesId,
-                categoryCode: 'CTPT',
+                categoryCode: 'NCT',
                 description: JSON.stringify(item?.mainContent?.content),
                 userId,
                 overviewId,
-                imagesId 
+                imagesId
             })
 
             await db.Attribute.create({
@@ -45,9 +47,12 @@ export const insertService = () => new Promise(async (resolve, reject) => {
                 image: JSON.stringify(item?.images)
             })
 
-            await db.Label.create({
-                code: labelCode,
-                value: item?.header?.class?.classType,
+            await db.Label.findOrCreate({
+                where: { code: labelCode },
+                defaults: {
+                    code: labelCode,
+                    value: item?.header?.class?.classType
+                }
             })
 
             await db.Overview.create({
@@ -68,7 +73,7 @@ export const insertService = () => new Promise(async (resolve, reject) => {
                 phone: item?.contact?.content.find(i => i.name === "Điện thoại:")?.content,
                 zalo: item?.contact?.content.find(i => i.name === "Zalo")?.content,
             })
-         })
+        })
         resolve('Done')
     } catch (error) {
         reject(error)
