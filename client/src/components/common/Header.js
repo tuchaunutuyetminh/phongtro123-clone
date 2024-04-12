@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import logo from '../../assests/images/logoWithoutbg.png'
-import Button from './Button'
+import {Button} from '../../components'
 
 import icons from '../../utils/icons'
 import withBaseComponent from '../../hocs/withBaseComponent'
@@ -31,7 +31,7 @@ const Header = ({ navigate, dispatch }) => {
     })
    }
   return (
-    <div className='w-1100 flex m-auto items-center justify-between'>
+    <div className='w-3/5 flex items-center justify-between'>
       <Link to={`${path.HOME}`}>
         <img src={logo} alt='logo' className='w-[240px] object-cover' />
       </Link>

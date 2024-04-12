@@ -12,19 +12,19 @@ const Navigation = () => {
     const [categories, setcategories] = useState([])
     useEffect(() => {
         setcategories(categoriesData)
-    }, [])
+    })
     return (
         <div className='w-screen flex justify-center items-center bg-secondary1 text-white'>
-            <div className='w-1100 flex items-center text-sm font-medium'>
+            <div className='w-3/5 flex items-start text-sm font-medium'>
                 <NavLink
                     className={({ isActive }) => isActive ? active : notActive}
-                    to={`/`}>
+                    to={``}>
                     Trang chủ
                 </NavLink>
                 {categories?.length > 0 && categories.map((item, index) => (
                     <NavLink
                         className={({ isActive }) => isActive ? active : notActive}
-                        key={item.code} to={`${formatVietnameseToString(item.value)}`}>
+                        key={item.code} to={`/${formatVietnameseToString(item.value)}`}>
                         {item.value}
                     </NavLink>
                 ))}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import InputForm from '../../components/inputs/InputForm'
-import Button from '../../components/common/Button'
+import {Button} from '../../components'
 import withBaseComponent from '../../hocs/withBaseComponent'
 import { loginUser, registerUser } from '../../store/auth/asyncActions'
 import { useSelector } from 'react-redux'
