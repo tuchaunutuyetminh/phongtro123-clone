@@ -84,7 +84,7 @@ const Login = ({ location, dispatch, navigate }) => {
           fullWidth
         />
         <Button
-          style='bg-[#3961fb] flex justify-center'
+          style='bg-[#3961fb] flex justify-center font-semibold'
           fw
           type='submit'>
           {isRegister ? 'Đăng ký' : 'Đăng nhập'}

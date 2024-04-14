@@ -1,6 +1,6 @@
 import { FiPlusCircle } from 'react-icons/fi'
-import { BsChevronRight } from 'react-icons/bs'
-import { IoMdCrop,IoMdSearch  } from 'react-icons/io'
+import { BsChevronRight,BsBookmarkStarFill  } from 'react-icons/bs'
+import { IoMdCrop,IoMdSearch,IoIosStar,IoIosHeart, IoIosHeartEmpty   } from 'react-icons/io'
 import { TbReportMoney } from 'react-icons/tb'
 import { MdOutlineOtherHouses } from 'react-icons/md'
 import { CiLocationOn } from 'react-icons/ci'
@@ -14,8 +14,11 @@ const icons = {
     TbReportMoney,
     IoMdCrop,
     MdOutlineOtherHouses,
-    IoMdSearch  
-
+    IoMdSearch, 
+    IoIosStar,
+    IoIosHeart,
+    IoIosHeartEmpty ,
+    BsBookmarkStarFill 
 }
 
 export default icons

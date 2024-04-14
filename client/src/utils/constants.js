@@ -56,3 +56,5 @@ export const location = [
         image: 'https://phongtro123.com/images/location_dn.jpg'
     }
 ]
+
+export const leadHeading = 'Danh sách bài đăng'
