@@ -14,7 +14,7 @@ const Navigation = () => {
         setcategories(categoriesData)
     })
     return (
-        <div className='w-screen flex justify-center items-center bg-secondary1 text-white'>
+        <div className='w-full flex justify-center items-center bg-secondary1 text-white'>
             <div className='w-3/5 flex items-start text-sm font-medium'>
                 <NavLink
                     className={({ isActive }) => isActive ? active : notActive}

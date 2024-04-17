@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { memo, useEffect } from 'react'
 import { leadHeading } from '../../utils/constants'
 import {Button, Item} from '../../components'
+import withBaseComponent from '../../hocs/withBaseComponent'
+import { getPosts } from '../../store/post/asyncActions'
+import { useSelector } from 'react-redux'
 
-const List = () => {
+const List = ({dispatch}) => {
+  const {posts} = useSelector(state => state.posts)
+
+  useEffect(() => {
+    dispatch(getPosts())
+  },[])
   return (
     <div className='w-full border border-blue-600 p-2 rounded-md bg-white shadow-md'>
         <div className='flex items-center justify-between my-3'>
@@ -15,10 +23,12 @@ const List = () => {
             <Button style='bg-gray-200 text-black' type='button'>mới nhất</Button>
         </div>
         <div className='items'>
-            <Item />
+            {posts?.length > 0 && posts.map(item => (
+              <Item key={item.id} item={item}/>
+            ))}
         </div>
     </div>
   )
 }
 
-export default List
+export default withBaseComponent(memo(List))

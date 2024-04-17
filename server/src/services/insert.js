@@ -1,13 +1,13 @@
 import db from '../models'
 import bcrypt from 'bcryptjs'
 import { v4 } from 'uuid'
-import nhachothue from '../../data/nhachothue.json'
+import chothuephongtro from '../../data/chothuephongtro.json'
 import generateCode from '../utils/generateCode'
 import label from '../models/label'
 import { Where } from 'sequelize/lib/utils'
 import { where } from 'sequelize'
 require('dotenv').config()
-const dataBody = nhachothue.body
+const dataBody = chothuephongtro.body
 //func hash password 
 const hashPassword = (password) => bcrypt.hashSync(password, bcrypt.genSaltSync(12))
 
@@ -27,7 +27,7 @@ export const insertService = () => new Promise(async (resolve, reject) => {
                 labelCode,
                 address: item?.header?.address,
                 attributesId,
-                categoryCode: 'NCT',
+                categoryCode: 'CTPT',
                 description: JSON.stringify(item?.mainContent?.content),
                 userId,
                 overviewId,

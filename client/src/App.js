@@ -15,7 +15,7 @@ function App() {
   }
     , [])
   return (
-    <div className="h-screen w-screen bg-primary">
+    <div className="w-screen bg-primary">
       {isShowModal && <Modal>{modalChildren}</Modal>}
       <Routes>
         <Route path={path.HOME} element={<Home />}>
