@@ -1,16 +1,28 @@
-import React, { memo, useEffect } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { leadHeading } from '../../utils/constants'
 import {Button, Item} from '../../components'
 import withBaseComponent from '../../hocs/withBaseComponent'
 import { getPosts } from '../../store/post/asyncActions'
 import { useSelector } from 'react-redux'
+import { apiGetPostsLimit } from '../../services/post'
 
 const List = ({dispatch}) => {
-  const {posts} = useSelector(state => state.posts)
-
+  // const {posts} = useSelector(state => state.posts)
+  const [page, setPage] = useState(0)
+  const [countPost, setCountPost] = useState(0)
+  const [postsLimit, setPostLimit] = useState([])
+  const fetchPosts = async(page) => { 
+    const response = await apiGetPostsLimit(page)
+    if(response.err === 0) {
+      setCountPost(response.response.count)
+      setPostLimit(response.response.rows)
+    }
+   }
   useEffect(() => {
-    dispatch(getPosts())
+    fetchPosts(1)
   },[])
+  console.log(countPost)
+  
   return (
     <div className='w-full border border-blue-600 p-2 rounded-md bg-white shadow-md'>
         <div className='flex items-center justify-between my-3'>
@@ -23,7 +35,7 @@ const List = ({dispatch}) => {
             <Button style='bg-gray-200 text-black' type='button'>mới nhất</Button>
         </div>
         <div className='items'>
-            {posts?.length > 0 && posts.map(item => (
+            {postsLimit?.length > 0 && postsLimit.map(item => (
               <Item key={item.id} item={item}/>
             ))}
         </div>

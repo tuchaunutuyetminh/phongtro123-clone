@@ -37,9 +37,11 @@ const Item = ({item}) => {
                     </div>
                 </div>
                 <div className='my-1 flex items-center justify-between gap-1'>
-                    <span className='font-bold text-[#16c784]'>{attributes?.price}</span>
-                    <span className='text-[13px]'>{attributes?.acreage}</span>
-                    <span className='line-clamp-2 text-ellipsis'>{address}</span>
+                    <span className='font-bold text-[#16c784] flex-3 line-clamp-1 text-ellipsis'>{attributes?.price}</span>
+                    <span className='text-[13px] flex-1'>{attributes?.acreage}</span>
+                    <span className='line-clamp-1 text-ellipsis flex-3'>
+                        {`${address.split(',')[address.split(',').length - 2]}, ${address.split(',')[address.split(',').length - 1]}`}
+                    </span>
                 </div>
                 <p className='text-gray-600 w-full line-clamp-2 text-ellipsis'>
                     {JSON.parse(description)}
