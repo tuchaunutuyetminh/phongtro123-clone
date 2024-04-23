@@ -4,7 +4,7 @@ import { IoMdCrop,IoMdSearch,IoIosStar,IoIosHeart, IoIosHeartEmpty   } from 'rea
 import { TbReportMoney } from 'react-icons/tb'
 import { MdOutlineOtherHouses } from 'react-icons/md'
 import { CiLocationOn } from 'react-icons/ci'
- 
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa6";
 
 
 const icons = {
@@ -18,7 +18,9 @@ const icons = {
     IoIosStar,
     IoIosHeart,
     IoIosHeartEmpty ,
-    BsBookmarkStarFill 
+    BsBookmarkStarFill,
+    FaArrowRight,
+    FaArrowLeft
 }
 
 export default icons

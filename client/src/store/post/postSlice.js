@@ -4,7 +4,8 @@ import * as actions from './asyncActions'
 export const postSlice = createSlice({
     name: 'auth',
     initialState: {
-        posts: [],
+        allPost: [],
+        count: 0,
         msg: ''
     },
     reducers: {
@@ -17,18 +18,21 @@ export const postSlice = createSlice({
         builder.addCase(actions.getPosts.pending, (state) => {
             state.isLoading = true;
             state.msg = ''
+            state.count = 0
         });
 
         builder.addCase(actions.getPosts.fulfilled, (state, action) => {
             state.isLoading = false;
-            state.posts = action.payload.response;
+            state.allPost = action.payload.response.rows;
             state.msg = action.payload.msg
+            state.count = action.payload.response.count
         });
 
         builder.addCase(actions.getPosts.rejected, (state, action) => {
             state.isLoading = false;
-            state.posts = [];
+            state.allPost = [];
             state.msg = ''
+            state.count = 0
         });
     },
 })

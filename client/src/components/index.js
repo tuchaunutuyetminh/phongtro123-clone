@@ -10,4 +10,9 @@ export { default as SearchItem} from './search/SearchItem'
 export { default as List} from './list/List'
 export { default as Item} from './list/Item'
 
+export { default as PaginationItem} from './pagination/PaginationItem'
+export { default as Pagination} from './pagination/Pagination'
+
+
+
 

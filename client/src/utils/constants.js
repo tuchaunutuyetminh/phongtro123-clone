@@ -1,7 +1,8 @@
 
 
 export const path = {
-    HOME: '/',
+    HOME: '/*',
+    HOME__PAGE: ':page',
     LOGIN: 'dang-ky',
     SIGN_UP: 'signup',
     CHO_THUE_PHONG_TRO: 'cho-thue-phong-tro',

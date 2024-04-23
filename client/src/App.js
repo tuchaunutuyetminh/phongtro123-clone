@@ -5,12 +5,14 @@ import { useSelector, useDispatch } from "react-redux";
 import Modal from "./components/common/Modal";
 import { useEffect } from "react";
 import { getCategories } from "./store/app/asyncActions";
+import { getPosts } from "./store/post/asyncActions";
 
 function App() {
 
   const dispatch = useDispatch()
   const { isShowModal, modalChildren } = useSelector(state => state.app)
   useEffect(() => {
+    dispatch(getPosts())
     dispatch(getCategories())
   }
     , [])
@@ -19,7 +21,8 @@ function App() {
       {isShowModal && <Modal>{modalChildren}</Modal>}
       <Routes>
         <Route path={path.HOME} element={<Home />}>
-          <Route path='/' element={<HomePage />} />
+        <Route path='*' element={<HomePage />} />
+          <Route path={path.HOME__PAGE} element={<HomePage />} />
           <Route path={path.LOGIN} element={<Login />} />
           <Route path={path.NHA_CO_THUE} element={<RentalHouse />} />
           <Route path={path.CHO_THUE_CAN_HO} element={<RentalApartment />} />

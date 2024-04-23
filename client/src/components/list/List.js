@@ -1,28 +1,16 @@
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo, useEffect } from 'react'
 import { leadHeading } from '../../utils/constants'
-import {Button, Item} from '../../components'
+import {Button, Item, Pagination} from '../../components'
 import withBaseComponent from '../../hocs/withBaseComponent'
-import { getPosts } from '../../store/post/asyncActions'
 import { useSelector } from 'react-redux'
-import { apiGetPostsLimit } from '../../services/post'
+import { getPosts } from '../../store/post/asyncActions'
 
-const List = ({dispatch}) => {
-  // const {posts} = useSelector(state => state.posts)
-  const [page, setPage] = useState(0)
-  const [countPost, setCountPost] = useState(0)
-  const [postsLimit, setPostLimit] = useState([])
-  const fetchPosts = async(page) => { 
-    const response = await apiGetPostsLimit(page)
-    if(response.err === 0) {
-      setCountPost(response.response.count)
-      setPostLimit(response.response.rows)
-    }
-   }
+const List = ({page, dispatch}) => {
+  const { allPost} = useSelector(state => state.posts)
   useEffect(() => {
-    fetchPosts(1)
-  },[])
-  console.log(countPost)
-  
+    let offset = page ? +page - 1 : 0
+    dispatch(getPosts(offset))
+  }, [page])
   return (
     <div className='w-full border border-blue-600 p-2 rounded-md bg-white shadow-md'>
         <div className='flex items-center justify-between my-3'>
@@ -31,14 +19,15 @@ const List = ({dispatch}) => {
         </div>
         <div className='flex items-center gap-2 my-2'>
             <span>Sắp xếp: </span>
-            <Button style='bg-gray-200 text-black' type='button'>mặc định</Button>
-            <Button style='bg-gray-200 text-black' type='button'>mới nhất</Button>
+            <Button style={'bg-gray-200 text-black'} type='button'>mặc định</Button>
+            <Button style={'bg-gray-200 text-black'} type='button'>mới nhất</Button>
         </div>
         <div className='items'>
-            {postsLimit?.length > 0 && postsLimit.map(item => (
+            {allPost?.length > 0 && allPost?.map(item => (
               <Item key={item.id} item={item}/>
             ))}
         </div>
+        {/* <Pagination length={allPost.length}/> */}
     </div>
   )
 }
