@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react'
-import { List, Pagination, Province } from '../../components'
+import React from 'react'
+import { ItemSidebar, List, Pagination, Province } from '../../components'
 import { text } from '../../utils/constants'
 import withBaseComponent from '../../hocs/withBaseComponent'
-import { getPosts } from '../../store/post/asyncActions'
 import { useSearchParams} from 'react-router-dom'
-const HomePage = ({dispatch}) => {
+import { useSelector } from 'react-redux'
+
+const HomePage = () => {
   
   
   const [params] = useSearchParams()
-
+  const {categoriesData} = useSelector(state => state.app)
   
   return (
     <div className='w-full flex flex-col gap-2'>
@@ -23,8 +24,10 @@ const HomePage = ({dispatch}) => {
           <Pagination page={params.get('page')}/>
         </div>
           
-        <div className='w-[30%] border border-green-500'>
-          Sidebar
+        <div className='w-[30%] border border-green-500 flex flex-col gap-4 justify-start items-center'>
+          <ItemSidebar content={categoriesData} title='Danh mục cho thuê'/>
+          <ItemSidebar title='Xem theo giá' />
+          <ItemSidebar title='Xem theo diện tích' />
         </div>
       </div>
     </div>

@@ -1,16 +1,23 @@
 import React, { memo, useState } from 'react'
 import icons from '../../utils/icons'
 import Button from '../buttons/Button'
+import { formatVietnameseToString, renderStarToNumber } from '../../utils/helper'
+import withBaseComponent from '../../hocs/withBaseComponent'
+import { Link } from 'react-router-dom'
+import { path } from '../../utils/constants'
 const indexs = [0,1,2,3]
 
 const { IoIosStar, IoIosHeart, IoIosHeartEmpty, BsBookmarkStarFill } = icons
 
-const Item = ({item}) => {
-    const {images, description,attributes, star,address,title, user } = item
+const Item = ({item, navigate}) => {
+    const {images, description,attributes, star,address,title, user, id } = item
     const [isHoverHeart, setIsHoverHeart] = useState(false)
+
     return (
         <div className='w-full flex border-t border-orange-600 py-4'>
-            <div className='w-2/5 flex flex-wrap gap-[6px] relative cursor-pointer'>
+            <Link
+                to={`${path.DETAIL_POST}/${formatVietnameseToString(title)}/${id}`}
+             className='w-2/5 flex flex-wrap gap-[6px] relative cursor-pointer'>
                 {JSON.parse(images.image).length > 0 && JSON.parse(images.image).filter((i, index) => indexs.some(i => i === index))?.map((img, index) => (
                     <img key={index} src={img} alt='preview' className='w-[110px] h-[100px] object-cover' />
                 ))}
@@ -21,15 +28,13 @@ const Item = ({item}) => {
                     className="text-white absolute right-5 bottom-1">
                     {isHoverHeart ? <IoIosHeart size={26} color='red'/> : <IoIosHeartEmpty size={26} />}
                 </span>
-            </div>
+            </Link>
             <div className='w-3/5'>
                 <div className='flex justify-between w-full'>
                     <div className='text-red-500 font-medium line-clamp-2 text-ellipsis'>
-                        <IoIosStar className='starItem' size={18} color='orange' />
-                        <IoIosStar className='starItem' size={18} color='orange' />
-                        <IoIosStar className='starItem' size={18} color='orange' />
-                        <IoIosStar className='starItem' size={18} color='orange' />
-                        <IoIosStar className='starItem' size={18} color='orange' />
+                        {renderStarToNumber(+star).length > 0 && renderStarToNumber(+star).map((star, number) => (
+                            <span key={number} className='inline-block'>{star}</span>
+                        ))}
                         {title}
                     </div>
                     <div className='w-[10%] flex justify-end'>
@@ -61,4 +66,4 @@ const Item = ({item}) => {
     )
 }
 
-export default memo(Item)
+export default withBaseComponent(memo(Item))

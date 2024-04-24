@@ -24,7 +24,7 @@ const List = ({page, dispatch}) => {
         </div>
         <div className='items'>
             {allPost?.length > 0 && allPost?.map(item => (
-              <Item key={item.id} item={item}/>
+              <Item key={item.id} item={item} />
             ))}
         </div>
         {/* <Pagination length={allPost.length}/> */}

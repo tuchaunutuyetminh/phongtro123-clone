@@ -1,6 +1,6 @@
 import { FiPlusCircle } from 'react-icons/fi'
 import { BsChevronRight,BsBookmarkStarFill  } from 'react-icons/bs'
-import { IoMdCrop,IoMdSearch,IoIosStar,IoIosHeart, IoIosHeartEmpty   } from 'react-icons/io'
+import { IoMdCrop,IoMdSearch,IoIosStar,IoIosStarOutline, IoIosHeart, IoIosHeartEmpty   } from 'react-icons/io'
 import { TbReportMoney } from 'react-icons/tb'
 import { MdOutlineOtherHouses } from 'react-icons/md'
 import { CiLocationOn } from 'react-icons/ci'
@@ -16,6 +16,7 @@ const icons = {
     MdOutlineOtherHouses,
     IoMdSearch, 
     IoIosStar,
+    IoIosStarOutline,
     IoIosHeart,
     IoIosHeartEmpty ,
     BsBookmarkStarFill,
