@@ -6,6 +6,7 @@ import Modal from "./components/common/Modal";
 import { useEffect } from "react";
 import { getCategories } from "./store/app/asyncActions";
 import { getPosts } from "./store/post/asyncActions";
+import { getPrices } from "./store/prices/asyncActions";
 
 function App() {
 

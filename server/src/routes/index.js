@@ -2,6 +2,10 @@ import authRouter from './auth'
 import insertRouter from './insert'
 import categoryRouter from './category'
 import postRouter from './post'
+import pricesRouter from './prices'
+import areaRouter from './area'
+
+
 
 
 const initRoutes = (app) => { 
@@ -9,6 +13,8 @@ const initRoutes = (app) => {
     app.use('/api/v1/insert', insertRouter)
     app.use('/api/v1/category', categoryRouter)
     app.use('/api/v1/post', postRouter)
+    app.use('/api/v1/price', pricesRouter)
+    app.use('/api/v1/area', areaRouter)
 
 
 

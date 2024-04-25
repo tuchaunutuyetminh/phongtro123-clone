@@ -10,7 +10,7 @@ import generateCode from '../utils/generateCode'
 import {dataPrice, dataArea} from '../utils/data'
 import {getNumberFromString} from '../utils/helper'
 require('dotenv').config()
-const dataBody = nhachothue.body
+const dataBody = chothuematbang.body
 
 //func hash password 
 const hashPassword = (password) => bcrypt.hashSync(password, bcrypt.genSaltSync(12))
@@ -34,7 +34,7 @@ export const insertService = () => new Promise(async (resolve, reject) => {
                 labelCode,
                 address: item?.header?.address,
                 attributesId,
-                categoryCode: 'NCT',
+                categoryCode: 'CTMB',
                 description: JSON.stringify(item?.mainContent?.content),
                 userId,
                 overviewId,
@@ -85,6 +85,29 @@ export const insertService = () => new Promise(async (resolve, reject) => {
             })
         })
         resolve('Done')
+    } catch (error) {
+        reject(error)
+    }
+
+})
+
+export const createPricesAndAreas = () => new Promise((resolve, reject) => {
+    try {
+        dataPrice.forEach(async(item, index) => {
+            await db.Price.create({
+                code: item.code,
+                value: item.value,
+                order: index + 1
+            })
+        })
+        dataArea.forEach(async(item, index) => {
+            await db.Area.create({
+                code: item.code,
+                value: item.value,
+                order: index + 1
+            })
+        })
+        resolve('Ok')
     } catch (error) {
         reject(error)
     }

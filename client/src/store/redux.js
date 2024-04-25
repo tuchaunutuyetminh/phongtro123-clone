@@ -13,6 +13,8 @@ import {
 import authSlice from './auth/authSlice';
 import appSlice from './app/appSlice';
 import postSlice from './post/postSlice';
+import  pricesSlice  from './prices/pricesSlice';
+import  areaSLice from './areas/pricesSlice';
 
 
 const commonConfig = {
@@ -27,7 +29,9 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(authConfig, authSlice),
     app: appSlice,
-    posts: postSlice
+    posts: postSlice,
+    prices: pricesSlice,
+    areas: areaSLice
   },
   middleware: (getDefaultMiddleware) =>
   getDefaultMiddleware({
