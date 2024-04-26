@@ -18,8 +18,7 @@ const HomePage = ({dispatch}) => {
 
 
   useEffect(() => { 
-    dispatch(getPrices())
-    dispatch(getAreas())
+   
    },[])
   return (
     <div className='w-full flex flex-col gap-2'>
@@ -30,7 +29,7 @@ const HomePage = ({dispatch}) => {
       <Province />
       <div className='w-full flex gap-4'>
         <div className='w-[70%]'>
-          <List page={params.get('page')} />
+          <List />
           <Pagination page={params.get('page')} />
         </div>
 

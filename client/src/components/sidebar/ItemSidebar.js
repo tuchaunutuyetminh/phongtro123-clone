@@ -8,7 +8,6 @@ import { getPostsLimit } from '../../store/post/asyncActions'
 const { BsChevronRight } = icons
 const ItemSidebar = ({ content, title, isDoubleItem, type, dispatch, navigate, location }) => {
 
-    console.log(location)
     
     const formatContent = () => {
         const oddEl = content?.filter((item, index) => index % 2 !== 0)
@@ -24,10 +23,6 @@ const ItemSidebar = ({ content, title, isDoubleItem, type, dispatch, navigate, l
     }
 
     const handleFilterPosts = (code) => { 
-        dispatch(getPostsLimit({
-            [type]: code
-        }))
-
         navigate({
             pathname: location.pathname,
             search: createSearchParams({

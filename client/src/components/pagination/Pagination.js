@@ -13,8 +13,7 @@ const Pagination = ({ page }) => {
   const [isHideStart, setIsHideStart] = useState(false)
 
   useEffect(() => { 
-    let maxPage = Math.ceil(count / allPost.length)
-    console.log(maxPage)
+    let maxPage = Math.ceil(count / process.env.REACT_APP_LIMIT_POST)
     let end = (currentPage + 1) > maxPage ? maxPage : (currentPage + 1)
     let start = (currentPage - 1) <= 0  ? 1 : (currentPage - 1)
     let temp = []
@@ -22,7 +21,7 @@ const Pagination = ({ page }) => {
     setArrPage(temp)
 
     currentPage >= (maxPage - 1) ? setIsHideEnd(true) : setIsHideEnd(false)
-    currentPage <= 2 ? setIsHideStart(true) : setIsHideStart(false)
+    currentPage < 2 ? setIsHideStart(true) : setIsHideStart(false)
     
   }, [count, allPost, currentPage])
   return (
@@ -38,7 +37,7 @@ const Pagination = ({ page }) => {
         />
       ))}
       {!isHideEnd && <PaginationItem text={'...'} />}
-      {!isHideEnd && <PaginationItem icon={<FaArrowRight />} text={Math.floor(count /allPost.length)} setCurrentPage={setCurrentPage}/>}
+      {!isHideEnd && <PaginationItem icon={<FaArrowRight />} text={Math.floor(count / process.env.REACT_APP_LIMIT_POST)} setCurrentPage={setCurrentPage}/>}
       
     </div>
   )

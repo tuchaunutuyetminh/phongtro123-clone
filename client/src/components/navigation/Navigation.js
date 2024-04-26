@@ -18,7 +18,7 @@ const Navigation = () => {
             <div className='w-3/5 flex items-start text-sm font-medium'>
                 <NavLink
                     className={({ isActive }) => isActive ? active : notActive}
-                    to={``}>
+                    to={`/`}>
                     Trang chủ
                 </NavLink>
                 {categories?.length > 0 && categories.map((item, index) => (

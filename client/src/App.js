@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { getCategories } from "./store/app/asyncActions";
 import { getPosts, getPostsLimit } from "./store/post/asyncActions";
 import { getPrices } from "./store/prices/asyncActions";
+import { getAreas } from "./store/areas/asyncActions";
 
 function App() {
 
@@ -14,6 +15,8 @@ function App() {
   const { isShowModal, modalChildren } = useSelector(state => state.app)
   useEffect(() => {
     dispatch(getCategories())
+    dispatch(getPrices())
+    dispatch(getAreas())
   }
     , [])
   return (
@@ -22,7 +25,6 @@ function App() {
       <Routes>
         <Route path={path.HOME} element={<Home />}>
         <Route path='*' element={<HomePage />} />
-          <Route path={path.HOME__PAGE} element={<HomePage />} />
           <Route path={path.LOGIN} element={<Login />} />
           <Route path={path.NHA_CO_THUE} element={<RentalHouse />} />
           <Route path={path.CHO_THUE_CAN_HO} element={<RentalApartment />} />
