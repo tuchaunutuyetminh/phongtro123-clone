@@ -10,7 +10,7 @@ import generateCode from '../utils/generateCode'
 import {dataPrice, dataArea} from '../utils/data'
 import {getNumberFromString} from '../utils/helper'
 require('dotenv').config()
-const dataBody = chothuematbang.body
+const dataBody = chothuephongtro.body
 
 //func hash password 
 const hashPassword = (password) => bcrypt.hashSync(password, bcrypt.genSaltSync(12))
@@ -34,7 +34,7 @@ export const insertService = () => new Promise(async (resolve, reject) => {
                 labelCode,
                 address: item?.header?.address,
                 attributesId,
-                categoryCode: 'CTMB',
+                categoryCode: 'CTPT',
                 description: JSON.stringify(item?.mainContent?.content),
                 userId,
                 overviewId,

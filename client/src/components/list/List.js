@@ -21,7 +21,6 @@ const List = ({ dispatch }) => {
       data = { ...data, [i[0]]: i[1] }
     })
 
-    console.log(data)
     // let offset =
     dispatch(getPostsLimit(data))
   }, [searchParams])
