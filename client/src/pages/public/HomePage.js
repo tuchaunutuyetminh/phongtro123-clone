@@ -8,10 +8,9 @@ import { getPrices } from '../../store/prices/asyncActions'
 import { getAreas } from '../../store/areas/asyncActions'
 import { getPostsLimit } from '../../store/post/asyncActions'
 
-const HomePage = ({dispatch}) => {
+const HomePage = () => {
 
 
-  const [params] = useSearchParams()
   const { categoriesData } = useSelector(state => state.app)
   const {prices} = useSelector(state => state.prices)
   const {areas} = useSelector(state => state.areas)
@@ -30,7 +29,7 @@ const HomePage = ({dispatch}) => {
       <div className='w-full flex gap-4'>
         <div className='w-[70%]'>
           <List />
-          <Pagination page={params.get('page')} />
+          <Pagination  />
         </div>
 
         <div className='w-[30%] border border-green-500 flex flex-col gap-4 justify-start items-center'>
