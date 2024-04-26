@@ -3,13 +3,15 @@ import { leadHeading } from '../../utils/constants'
 import {Button, Item, Pagination} from '../../components'
 import withBaseComponent from '../../hocs/withBaseComponent'
 import { useSelector } from 'react-redux'
-import { getPosts } from '../../store/post/asyncActions'
+import { getPostsLimit } from '../../store/post/asyncActions'
 
 const List = ({page, dispatch}) => {
   const { allPost} = useSelector(state => state.posts)
   useEffect(() => {
     let offset = page ? +page - 1 : 0
-    dispatch(getPosts(offset))
+    dispatch(getPostsLimit({
+      offset}
+    ))
   }, [page])
   return (
     <div className='w-full border border-blue-600 p-2 rounded-md bg-white shadow-md'>

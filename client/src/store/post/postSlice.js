@@ -15,20 +15,20 @@ export const postSlice = createSlice({
         // }
     },
     extraReducers: (builder) => {
-        builder.addCase(actions.getPosts.pending, (state) => {
+        builder.addCase(actions.getPostsLimit.pending, (state) => {
             state.isLoading = true;
             state.msg = ''
             state.count = 0
         });
 
-        builder.addCase(actions.getPosts.fulfilled, (state, action) => {
+        builder.addCase(actions.getPostsLimit.fulfilled, (state, action) => {
             state.isLoading = false;
             state.allPost = action.payload.response.rows;
             state.msg = action.payload.msg
             state.count = action.payload.response.count
         });
 
-        builder.addCase(actions.getPosts.rejected, (state, action) => {
+        builder.addCase(actions.getPostsLimit.rejected, (state, action) => {
             state.isLoading = false;
             state.allPost = [];
             state.msg = ''

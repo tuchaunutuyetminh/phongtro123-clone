@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import * as apis from '../../services/post'
 
-export const getPosts = createAsyncThunk('post/all', async(data, {rejectWithValue}) => {
+export const getPostsLimit = createAsyncThunk('post/all', async(data, {rejectWithValue}) => {
     const response = await apis.apiGetPostsLimit(data)
     if(response?.err === 0)  return response
     // return response.rs

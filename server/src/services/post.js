@@ -1,3 +1,4 @@
+import { where } from 'sequelize'
 import db from '../models'
 
 export const getPostsService = () => new Promise(async(resolve, reject) => {
@@ -22,9 +23,10 @@ export const getPostsService = () => new Promise(async(resolve, reject) => {
     }
 })
 
-export const getPostsLimitService = (page) => new Promise(async(resolve, reject) => {
+export const getPostsLimitService = (page, query) => new Promise(async(resolve, reject) => {
     try {
         const response = await db.Post.findAndCountAll({
+            where: query,
             raw: true,
             nest: true,
             offset: page*5 || 0,

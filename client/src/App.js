@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Modal from "./components/common/Modal";
 import { useEffect } from "react";
 import { getCategories } from "./store/app/asyncActions";
-import { getPosts } from "./store/post/asyncActions";
+import { getPosts, getPostsLimit } from "./store/post/asyncActions";
 import { getPrices } from "./store/prices/asyncActions";
 
 function App() {
@@ -13,7 +13,6 @@ function App() {
   const dispatch = useDispatch()
   const { isShowModal, modalChildren } = useSelector(state => state.app)
   useEffect(() => {
-    dispatch(getPosts())
     dispatch(getCategories())
   }
     , [])

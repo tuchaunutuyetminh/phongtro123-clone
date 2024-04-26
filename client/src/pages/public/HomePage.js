@@ -6,6 +6,7 @@ import { useSearchParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { getPrices } from '../../store/prices/asyncActions'
 import { getAreas } from '../../store/areas/asyncActions'
+import { getPostsLimit } from '../../store/post/asyncActions'
 
 const HomePage = ({dispatch}) => {
 
@@ -35,7 +36,7 @@ const HomePage = ({dispatch}) => {
 
         <div className='w-[30%] border border-green-500 flex flex-col gap-4 justify-start items-center'>
           <ItemSidebar content={categoriesData} title='Danh mục cho thuê'/>
-          <ItemSidebar title='Xem theo giá' content={prices} isDoubleItem/>
+          <ItemSidebar title='Xem theo giá' content={prices} isDoubleItem type='priceCode' />
           <ItemSidebar title='Xem theo diện tích' isDoubleItem content={areas}/>
         </div>
       </div>

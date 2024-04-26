@@ -13,8 +13,8 @@ const Pagination = ({ page }) => {
   const [isHideStart, setIsHideStart] = useState(false)
 
   useEffect(() => { 
-    let maxPage = Math.floor(count / allPost.length)
-    console.log(currentPage)
+    let maxPage = Math.ceil(count / allPost.length)
+    console.log(maxPage)
     let end = (currentPage + 1) > maxPage ? maxPage : (currentPage + 1)
     let start = (currentPage - 1) <= 0  ? 1 : (currentPage - 1)
     let temp = []
