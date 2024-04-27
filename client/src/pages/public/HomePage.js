@@ -1,12 +1,8 @@
 import React, { useEffect } from 'react'
-import { ItemSidebar, List, Pagination, Province } from '../../components'
+import { ItemSidebar, List, Pagination, Province, RelatedPost } from '../../components'
 import { text } from '../../utils/constants'
 import withBaseComponent from '../../hocs/withBaseComponent'
-import { useSearchParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { getPrices } from '../../store/prices/asyncActions'
-import { getAreas } from '../../store/areas/asyncActions'
-import { getPostsLimit } from '../../store/post/asyncActions'
 
 const HomePage = () => {
 
@@ -36,6 +32,7 @@ const HomePage = () => {
           <ItemSidebar content={categoriesData} title='Danh mục cho thuê'/>
           <ItemSidebar title='Xem theo giá' content={prices} isDoubleItem type='priceCode' />
           <ItemSidebar title='Xem theo diện tích' isDoubleItem content={areas} type="areaCode"/>
+          <RelatedPost />
         </div>
       </div>
     </div>

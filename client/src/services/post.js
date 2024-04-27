@@ -10,5 +10,10 @@ export const apiGetPostsLimit = (data) => axios({
     params: data
 })
 
+export const apiGetNewPosts = () => axios({
+    url: `post/new-posts`,
+    method: 'get',
+})
+
 
 

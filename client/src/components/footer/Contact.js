@@ -5,7 +5,7 @@ import Button from '../buttons/Button'
 const Contact = () => {
   return (
     <div className='bg-white rounded-md shadow-md w-3/5 p-4 flex flex-col items-center justify-center'>
-        <image 
+        <img 
             src={text.image}
             alt='thumbnail'
             className='w-full h-48 object-cover'

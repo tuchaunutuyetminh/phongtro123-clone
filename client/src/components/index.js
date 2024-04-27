@@ -16,6 +16,8 @@ export { default as Pagination} from './pagination/Pagination'
 export { default as ItemSidebar} from './sidebar/ItemSidebar'
 export { default as Intro} from './footer/Intro'
 export { default as Contact} from './footer/Contact'
+export { default as RelatedPost} from './relatedPost/RelatedPost'
+export { default as SmallItem} from './relatedPost/SmallItem'
 
 
 
