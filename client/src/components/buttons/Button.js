@@ -6,7 +6,7 @@ const Button = ({style, children, type, handleOnclick, fw}) => {
     <button
     onClick={handleOnclick}
     type={type}
-    className={clsx(`p-2 outline-none rounded-md hover:underline  flex items-center gap-1`, style && style, fw && 'w-full')}
+    className={clsx(`px-4 py-2 font-bold outline-none rounded-md hover:underline  flex items-center gap-1`, style && style, fw && 'w-full')}
     >
         {children}
     </button>

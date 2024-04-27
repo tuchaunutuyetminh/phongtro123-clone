@@ -25,7 +25,7 @@ const List = ({ dispatch }) => {
     dispatch(getPostsLimit(data))
   }, [searchParams])
   return (
-    <div className='w-full border border-blue-600 p-2 rounded-md bg-white shadow-md'>
+    <div className='w-full p-2 rounded-md bg-white shadow-md'>
       <div className='flex items-center justify-between my-3'>
         <h4 className=' text-lg font-semibold'>{leadHeading}</h4>
         <span>Cập nhật ngày: 7:40 4/4/2024</span>
