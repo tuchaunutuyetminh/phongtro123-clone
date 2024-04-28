@@ -7,7 +7,7 @@ import { getPostsLimit } from '../../store/post/asyncActions'
 import { useSearchParams } from 'react-router-dom'
 
 
-const List = ({ dispatch }) => {
+const List = ({ dispatch, categoryCode }) => {
   const { allPost } = useSelector(state => state.posts)
   const [searchParams] = useSearchParams()
   useEffect(() => {
@@ -15,15 +15,15 @@ const List = ({ dispatch }) => {
     for(let entry of searchParams.entries()) {
       params.push(entry)
     }
-
     let data = {}
-    params?.map(i => {
-      data = { ...data, [i[0]]: i[1] }
-    })
+    params?.map(i => {data = { ...data, [i[0]]: i[1] }})
+    if(categoryCode) {
+      data.categoryCode = categoryCode
+    }
 
-    // let offset =
+    // call api
     dispatch(getPostsLimit(data))
-  }, [searchParams])
+  }, [searchParams, categoryCode])
   return (
     <div className='w-full p-2 rounded-md bg-white shadow-md'>
       <div className='flex items-center justify-between my-3'>

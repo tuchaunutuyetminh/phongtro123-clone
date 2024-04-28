@@ -4,7 +4,7 @@ import withBaseComponent from '../../hocs/withBaseComponent'
 
 const notActive = 'w-[46px] h-[48px] flex justify-center items-center bg-white hover:bg-gray-300 rounded-md'
 const active = 'w-[46px] h-[48px] flex justify-center items-center bg-[#e13427] hover:opacity-90 text-white rounded-md '
-const PaginationItem = ({ text, icon, navigate, currentPage, setCurrentPage }) => {
+const PaginationItem = ({ text, icon, navigate, currentPage, setCurrentPage, location }) => {
 
   const [searchParams] = useSearchParams()
   let entries = searchParams.entries()
@@ -29,7 +29,7 @@ const PaginationItem = ({ text, icon, navigate, currentPage, setCurrentPage }) =
 
       setCurrentPage(+text)
       navigate({
-        pathname: "",
+        pathname: location.pathname,
         search: createSearchParams(append(entries)).toString()
       })
     }
