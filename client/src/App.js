@@ -8,6 +8,7 @@ import { getCategories } from "./store/app/asyncActions";
 import { getPosts, getPostsLimit } from "./store/post/asyncActions";
 import { getPrices } from "./store/prices/asyncActions";
 import { getAreas } from "./store/areas/asyncActions";
+import { getProvinces } from "./store/province/asyncActions";
 
 function App() {
 
@@ -17,6 +18,8 @@ function App() {
     dispatch(getCategories())
     dispatch(getPrices())
     dispatch(getAreas())
+    dispatch(getProvinces())
+
   }
     ,[])
   return (

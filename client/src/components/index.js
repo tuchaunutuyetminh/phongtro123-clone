@@ -1,7 +1,11 @@
 export { default as Header} from './common/Header'
+export { default as Modal} from './common/Modal'
+export { default as PopupFilter} from './common/PopupFilter'
+
 export { default as Province} from './province/Province'
 export { default as Button} from './buttons/Button'
 export { default as ProvinceBtn} from './buttons/ProvinceBtn'
+
 
 export { default as InputForm} from './inputs/InputForm'
 export { default as Navigation} from './navigation/Navigation'

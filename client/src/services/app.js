@@ -10,6 +10,12 @@ export const apiGetAreas = () => axios({
     method: 'get',
 })
 
+export const apiGetProvinces = () => axios({
+    url: 'province/all',
+    method: 'get',
+})
+
+
 
 
 

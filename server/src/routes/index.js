@@ -4,6 +4,8 @@ import categoryRouter from './category'
 import postRouter from './post'
 import pricesRouter from './prices'
 import areaRouter from './area'
+import provinceRouter from './province'
+
 
 
 
@@ -15,6 +17,8 @@ const initRoutes = (app) => {
     app.use('/api/v1/post', postRouter)
     app.use('/api/v1/price', pricesRouter)
     app.use('/api/v1/area', areaRouter)
+    app.use('/api/v1/province', provinceRouter)
+
 
 
 
