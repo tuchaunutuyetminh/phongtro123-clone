@@ -3,7 +3,6 @@ import * as apis from '../../services/app'
 
 export const getProvinces = createAsyncThunk('province/all', async(data, {rejectWithValue}) => {
     const response = await apis.apiGetProvinces()
-    console.log(response)
     if(response?.err === 0)  return response.response
     // return response.rs
     return rejectWithValue(response)
