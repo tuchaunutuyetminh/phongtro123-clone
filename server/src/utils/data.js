@@ -8,32 +8,32 @@ const prices = [
     {
         min: 1,
         max: 2,
-        value: 'Từ 1-2 triệu',
+        value: 'Từ 1 - 2 triệu',
     },
     {
         min: 2,
         max: 3,
-        value: 'Từ 2-3 triệu',
+        value: 'Từ 2 - 3 triệu',
     },
     {
         min: 3,
         max: 5,
-        value: 'Từ 3-5 triệu',
+        value: 'Từ 3 - 5 triệu',
     },
     {
         min: 5,
         max: 7,
-        value: 'Từ 5-7 triệu',
+        value: 'Từ 5 - 7 triệu',
     },
     {
         min: 7,
         max: 10,
-        value: 'Từ 7-10 triệu',
+        value: 'Từ 7 - 10 triệu',
     },
     {
         min: 10,
         max: 15,
-        value: 'Từ 10-15 triệu',
+        value: 'Từ 10 - 15 triệu',
     },
     {
         min: 15,
@@ -51,32 +51,32 @@ const area = [
     {
         min: 0,
         max: 20,
-        value: 'Dưới 20m'
+        value: 'Dưới 20 m'
     },
     {
         min: 20,
         max: 30,
-        value: 'Từ 20m-30m'
+        value: 'Từ 20 - 30 m'
     },
     {
         min: 30,
         max: 50,
-        value: 'Từ 30m-50m'
+        value: 'Từ 30 - 50 m'
     },
     {
         min: 50,
         max: 70,
-        value: 'Từ 50m-70m'
+        value: 'Từ 50 - 70 m'
     },
     {
         min: 70,
         max: 90,
-        value: 'Từ 70m-90m'
+        value: 'Từ 70 - 90 m'
     },
     {
         min: 90,
         max: 999999,
-        value: 'Trên 90m'
+        value: 'Trên 90 m'
     },
 
 ]
