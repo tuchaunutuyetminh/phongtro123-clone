@@ -8,7 +8,6 @@ const PopupFilter = ({ setIsShowModal, content, name, handleSubmit, queries, arr
     // 
     //name === 'price' ? arrMinMax?.priceArr[1] : name === 'area' ? arrMinMax?.areaArr[1] : 100
 
-    console.log(arrMinMax)
     const [persent1, setPersent1] = useState(name === 'price' && arrMinMax?.priceArr ? arrMinMax?.priceArr[0] : name === 'area' && arrMinMax?.areaArr ? arrMinMax?.areaArr[0] : 0)
     const [persent2, setPersent2] = useState(name === 'price' && arrMinMax?.priceArr ? arrMinMax?.priceArr[1] : name === 'area' && arrMinMax?.areaArr ? arrMinMax?.areaArr[1] : 100)
     const [activedEl, setActivedEl] = useState('')
@@ -62,7 +61,6 @@ const PopupFilter = ({ setIsShowModal, content, name, handleSubmit, queries, arr
             setPersent2(convertTo100(arrMaxMin[1]))
         }
 
-        console.log(arrMaxMin)
     }
 
     //đổi từ phần trăm sang số tiền hoặc diện tích
@@ -85,13 +83,16 @@ const PopupFilter = ({ setIsShowModal, content, name, handleSubmit, queries, arr
 
     //hàm xử lý để tìm bài đăng theo giá hoặc diện tích bất kì trước khi gửi yêu cầu lấy bài đăng
     const handleBeforeSubmit = (e) => {
-        const gaps = name === 'price' ? getCodesPrice([convert100ToTarget(persent1), convert100ToTarget(persent2)], content)
-            : name === 'area' ? getCodesArea([convert100ToTarget(persent1), convert100ToTarget(persent2)], content) : []
+        let min = persent1 <= persent2 ? persent1 : persent2
+        let max = persent1 <= persent2 ? persent2 : persent1
+        const arrMinMax = [convert100ToTarget(min), convert100ToTarget(max)]
+        const gaps = name === 'price' ? getCodesPrice(arrMinMax, content)
+            : name === 'area' ? getCodesArea(arrMinMax, content) : []
 
         handleSubmit({
             [`${name}Code`]: gaps?.map(item => item.code),
-            [name]: `Từ ${convert100ToTarget(persent1)} - ${convert100ToTarget(persent2)} ${name === 'price'? 'triệu': 'm2'}`
-        },e, {[`${name}Arr`]: [persent1, persent2]})
+            [name]: `Từ ${convert100ToTarget(min)} - ${convert100ToTarget(max)} ${name === 'price'? 'triệu': 'm2'}`
+        },e, {[`${name}Arr`]: [min, max]})
         // handleSubmit({
         //     [`${name}Code`]: [convert100ToTarget(persent1), convert100ToTarget(persent2)],
         //     [name]: `Từ ${convert100ToTarget(persent1)} - ${convert100ToTarget(persent2)} ${name === 'price'? 'triệu': 'm2'} +`
@@ -104,7 +105,7 @@ const PopupFilter = ({ setIsShowModal, content, name, handleSubmit, queries, arr
                 e.stopPropagation()
                 // setIsShowModal(true)
             }}
-            className='w-2/5 bg-white rounded-md'>
+            className='w-2/5 h-[500px] bg-white rounded-md relative'>
             <div className='h-[45px] flex items-center px-4 border-b border-b-gray-200'>
                 <span className='hover:text-[#f73859] cursor-pointer' onClick={(e) => {
                     e.stopPropagation()
@@ -204,7 +205,7 @@ const PopupFilter = ({ setIsShowModal, content, name, handleSubmit, queries, arr
                 </div>
             </div>}
             {(name === 'price' || name === 'area') && <button
-                className='w-full py-2 bg-[#ffa500] font-medium justify-center rounded-none rounded-bl-md rounded-br-md'
+                className='w-full absolute bottom-0 py-2 bg-[#ffa500] font-medium justify-center rounded-none rounded-bl-md rounded-br-md'
                 onClick={handleBeforeSubmit}
             >
                 ÁP DỤNG
