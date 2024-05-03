@@ -1,12 +1,13 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { Button, Modal, PopupFilter, SearchItem } from '../../components'
 import icons from '../../utils/icons'
 import { useSelector } from 'react-redux'
 import withBaseComponent from '../../hocs/withBaseComponent'
-import { getPostsLimit } from '../../store/post/asyncActions'
+import { path } from '../../utils/constants'
+import { createSearchParams } from 'react-router-dom'
 const { BsChevronRight, IoMdSearch, CiLocationOn, IoMdCrop, TbReportMoney, MdOutlineOtherHouses } = icons
 
-const Search = ({ dispatch }) => {
+const Search = ({ navigate, location }) => {
   const [isShowModal, setIsShowModal] = useState(false)
   const [content, setContent] = useState([])
   const [name, setName] = useState('')
@@ -17,7 +18,7 @@ const Search = ({ dispatch }) => {
   const { prices } = useSelector(state => state.prices)
   const { categoriesData } = useSelector(state => state.app)
 
-  const handleShowModal = (content, name) => {
+  const handleShowModal = (content, name, location) => {
     setContent(content)
     setIsShowModal(true)
     setName(name)
@@ -31,13 +32,29 @@ const Search = ({ dispatch }) => {
   }, [isShowModal, queries])
 
   const handleSearch = () => {
-    const queryCodes = Object.entries(queries).filter(item => item[0].includes('Code'))
+    const queryCodes = Object.entries(queries).filter(item => item[0].includes('Code')).filter(item => item[1])
     let queryCodesObject = {}
     queryCodes.forEach(i => {
       queryCodesObject[i[0]] = i[1]
     })
-    dispatch(getPostsLimit(queryCodesObject))
+    const queryText = Object.entries(queries).filter(item => !item[0].includes('Code')).filter(item => item[1])
+
+    console.log(queryText)
+    let queryTextObj = {}
+    queryText.forEach(item => {queryTextObj[item[0]] = item[1]})
+    let titleSearch = `${queryTextObj.category ? queryTextObj.category : 'Cho thuê tất cả'} ${queryTextObj.province ? `tỉnh ${queryTextObj.province}` : ''} ${queryTextObj.price ? `giá ${queryTextObj.price}` : ''} ${queryTextObj.area ? `diện tích ${queryTextObj.area}` : ''} `
+    
+    navigate({
+      pathname: path.SEARCH,
+      search: createSearchParams(queryCodesObject).toString(),
+      
+    }, {state: { titleSearch}})
+
+    //reset 
   }
+  useEffect(() => { 
+    if(!location.pathname.includes(path.SEARCH)) setQueries({})
+   },[location])
 
   return (
     <>

@@ -16,12 +16,20 @@ const PaginationItem = ({ text, icon, navigate, currentPage, setCurrentPage, loc
       params.push(entry)
     }
 
-    let a = {}
+    let data = {}
+    params?.forEach(i => {
+      if(Object.keys(data)?.some(item => item === i[0] && item !== 'page')) {
+        data[i[0]] = [...data[i[0]], i[1]]
+      }else {
+        data = { ...data, [i[0]]: [i[1]] }
+      }
+      })
+    
     params?.map(i => {
-      a = { ...a, [i[0]]: i[1] }
+      data = { ...data, [i[0]]: [i[1]] }
     })
 
-    return a
+    return data
   }
 
   const handleChangePage = () => {

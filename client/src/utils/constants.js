@@ -10,7 +10,8 @@ export const path = {
     CHO_THUE_CAN_HO: 'cho-thue-can-ho',
     CHO_THUE_MAT_BANG: 'cho-thue-mat-bang',
     DETAIL_POST__TITLE__POSTID: 'chi-tiet/:title/:postId',
-    DETAIL_POST: 'chi-tiet'
+    DETAIL_POST: 'chi-tiet',
+    SEARCH: 'tim-kiem'
 }
 
 

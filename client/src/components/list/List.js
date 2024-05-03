@@ -16,7 +16,13 @@ const List = ({ dispatch, categoryCode }) => {
       params.push(entry)
     }
     let data = {}
-    params?.map(i => {data = { ...data, [i[0]]: i[1] }})
+    params?.forEach(i => {
+    if(Object.keys(data)?.some(item => item === i[0])) {
+      data[i[0]] = [...data[i[0]], i[1]]
+    }else {
+      data = { ...data, [i[0]]: [i[1]] }
+    }
+    })
     if(categoryCode) {
       data.categoryCode = categoryCode
     }

@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useState } from 'react'
 import icons from '../../utils/icons'
-import { Button } from '../../components'
+import { Button } from '..'
 import { getNumbersfromSTrings } from '../../utils/helper'
 import { getCodesArea, getCodesPrice } from '../../utils/getCode'
 const { FaArrowLeft } = icons
