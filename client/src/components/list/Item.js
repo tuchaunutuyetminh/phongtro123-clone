@@ -19,7 +19,7 @@ const Item = ({item, navigate}) => {
                 to={`${path.DETAIL_POST}/${formatVietnameseToString(title)}/${id}`}
              className='w-2/5 flex flex-wrap gap-[6px] relative cursor-pointer'>
                 {JSON.parse(images.image).length > 0 && JSON.parse(images.image).filter((i, index) => indexs.some(i => i === index))?.map((img, index) => (
-                    <img key={index} src={img} alt='preview' className='w-[110px] h-[100px] object-cover' />
+                    <img key={index} src={img} alt='preview' className='w-[47%] h-[120px] object-cover' />
                 ))}
                 <span className="bg-overlay text-[13px] text-white px-2 rounded-md absolute left-1 bottom-1">{`${images?.image?.length} ảnh`}</span>
                 <span 

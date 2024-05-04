@@ -25,20 +25,20 @@ const Pagination = () => {
 
   useEffect(() => { 
     let maxPage = Math.ceil(count / process.env.REACT_APP_LIMIT_POST)
-    let end = (currentPage + 1) > maxPage ? maxPage : (currentPage + 1)
-    let start = (currentPage - 1) <= 0  ? 1 : (currentPage - 1)
+    let end = (currentPage + 2) > maxPage ? maxPage : (currentPage + 2)
+    let start = (currentPage - 2) <= 1  ? 1 : (currentPage - 2)
     let temp = []
     for(let i = start; i <=end; i++) temp.push(i)
     setArrPage(temp)
 
-    currentPage >= (maxPage - 1) ? setIsHideEnd(true) : setIsHideEnd(false)
-    currentPage < 2 ? setIsHideStart(true) : setIsHideStart(false)
+    currentPage >= (maxPage - 2) ? setIsHideEnd(true) : setIsHideEnd(false)
+    currentPage <= 3 ? setIsHideStart(true) : setIsHideStart(false)
     
   }, [count, allPost, currentPage])
   return (
     <div className='w-full flex items-center justify-center gap-2 py-5'>
-      {!isHideStart && <PaginationItem icon={<FaArrowLeft />} text={1} setCurrentPage={setCurrentPage}/>}
-      {!isHideStart && <PaginationItem text={'...'} />}
+      {!isHideStart && <PaginationItem text={1} setCurrentPage={setCurrentPage}/>}
+      {(!isHideStart && currentPage !== 4) && <PaginationItem text={'...'} />}
       
       {arrPage?.length > 0 && arrPage.map((item, i) => (
         <PaginationItem 
