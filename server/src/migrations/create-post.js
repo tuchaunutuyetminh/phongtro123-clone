@@ -52,6 +52,12 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
+      priceNumber: {
+        type: Sequelize.FLOAT
+      },
+      areaNumber: {
+        type: Sequelize.FLOAT
+      },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE

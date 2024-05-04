@@ -25,9 +25,9 @@ const PaginationItem = ({ text, icon, navigate, currentPage, setCurrentPage, loc
       }
       })
     
-    params?.map(i => {
-      data = { ...data, [i[0]]: [i[1]] }
-    })
+    // params?.map(i => {
+    //   data = { ...data, [i[0]]: [i[1]] }
+    // })
 
     return data
   }

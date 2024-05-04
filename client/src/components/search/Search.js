@@ -32,12 +32,12 @@ const Search = ({ navigate, location }) => {
   }, [isShowModal, queries])
 
   const handleSearch = () => {
-    const queryCodes = Object.entries(queries).filter(item => item[0].includes('Code')).filter(item => item[1])
+    const queryCodes = Object.entries(queries).filter(item => item[0].includes('Code') || item[0].includes('Number')).filter(item => item[1])
     let queryCodesObject = {}
     queryCodes.forEach(i => {
       queryCodesObject[i[0]] = i[1]
     })
-    const queryText = Object.entries(queries).filter(item => !item[0].includes('Code')).filter(item => item[1])
+    const queryText = Object.entries(queries).filter(item => !item[0].includes('Code') || !item[0].includes('Number')).filter(item => item[1])
 
     console.log(queryText)
     let queryTextObj = {}

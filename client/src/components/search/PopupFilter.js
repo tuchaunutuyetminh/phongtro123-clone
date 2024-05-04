@@ -86,11 +86,11 @@ const PopupFilter = ({ setIsShowModal, content, name, handleSubmit, queries, arr
         let min = persent1 <= persent2 ? persent1 : persent2
         let max = persent1 <= persent2 ? persent2 : persent1
         const arrMinMax = [convert100ToTarget(min), convert100ToTarget(max)]
-        const gaps = name === 'price' ? getCodesPrice(arrMinMax, content)
-            : name === 'area' ? getCodesArea(arrMinMax, content) : []
+        // const gaps = name === 'price' ? getCodesPrice(arrMinMax, content)
+        //     : name === 'area' ? getCodesArea(arrMinMax, content) : []
 
         handleSubmit({
-            [`${name}Code`]: gaps?.map(item => item.code),
+            [`${name}Number`]: arrMinMax,
             [name]: `Từ ${convert100ToTarget(min)} - ${convert100ToTarget(max)} ${name === 'price'? 'triệu': 'm2'}`
         },e, {[`${name}Arr`]: [min, max]})
         // handleSubmit({
