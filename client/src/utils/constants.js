@@ -1,3 +1,4 @@
+import icons from "./icons"
 
 
 export const path = {
@@ -62,3 +63,25 @@ export const location = [
 ]
 
 export const leadHeading = 'Danh sách bài đăng'
+
+const {ImPencil2, LuClipboardList, FaClipboardUser} = icons
+export const menuManage = [
+    {
+        id: 1,
+        text: 'Đăng tin cho thuê',
+        path: '/quan-tri/tao-bai-dang-moi',
+        icon: <ImPencil2 />
+    },
+    {
+        id: 2,
+        text: 'Quản lý tin đăng',
+        path: '/quan-tri/quan-ly-bai-dang',
+        icon: <LuClipboardList />
+    },
+    {
+        id: 3,
+        text: 'Thông tin tài khoản',
+        path: '/quan-tri/thong-tin-tai-khoan',
+        icon: <FaClipboardUser />
+    }
+]

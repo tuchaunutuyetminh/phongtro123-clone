@@ -14,7 +14,7 @@ const Rental = ({ location, dispatch }) => {
   const [categoryCurrent, setcategoryCurrent] = useState({})
   
   useEffect(() => {
-    const category = categoriesData?.find(item => `/${formatVietnameseToString(item.value)}` === location.pathname)
+    const category = categoriesData?.find(item => `/${formatVietnameseToString(item.value)}` === location?.pathname)
     setcategoryCurrent(category)
     if (category) {
       setcategoryCode(category.code)

@@ -16,6 +16,7 @@ import postSlice from './post/postSlice';
 import  pricesSlice  from './prices/pricesSlice';
 import  areaSLice from './areas/pricesSlice';
 import provinceSlice from './province/provinceSlice';
+import userSlice from './user/userSlice';
 
 
 const commonConfig = {
@@ -33,7 +34,8 @@ export const store = configureStore({
     posts: postSlice,
     prices: pricesSlice,
     areas: areaSLice,
-    provinces: provinceSlice
+    provinces: provinceSlice,
+    user: userSlice
   },
   middleware: (getDefaultMiddleware) =>
   getDefaultMiddleware({

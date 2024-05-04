@@ -9,12 +9,11 @@ const instance = axios.create({
 instance.interceptors.request.use(function (config) {
     // Do something before request is sent
     //gắn token vào header
-    let localStorageData = window.localStorage.getItem('persist:auth')
+    let localStorageData = window.localStorage.getItem('persist:app/auth')
     if(localStorageData && typeof localStorageData === 'string') {
         localStorageData = JSON.parse(localStorageData)
         const accessToken = JSON.parse(localStorageData?.token)
-        console.log(accessToken)
-        // config.headers = { authorization: `Bearer ${accessToken}`}
+        config.headers = { authorization: accessToken ? `Bearer ${accessToken}` : null}
         return config
     } else return config;
   }, function (error) {

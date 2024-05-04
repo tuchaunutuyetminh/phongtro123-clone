@@ -9,11 +9,14 @@ import { getPosts, getPostsLimit } from "./store/post/asyncActions";
 import { getPrices } from "./store/prices/asyncActions";
 import { getAreas } from "./store/areas/asyncActions";
 import { getProvinces } from "./store/province/asyncActions";
+import { getCurrent } from "./store/user/asyncActions";
 
 function App() {
 
   const dispatch = useDispatch()
   const { isShowModal, modalChildren } = useSelector(state => state.app)
+  const { isLoggedIn } = useSelector(state => state.auth)
+
   useEffect(() => {
     dispatch(getCategories())
     dispatch(getPrices())
@@ -22,6 +25,8 @@ function App() {
 
   }
     ,[])
+
+    
   return (
     <div className="w-screen bg-primary">
       {isShowModal && <Modal>{modalChildren}</Modal>}

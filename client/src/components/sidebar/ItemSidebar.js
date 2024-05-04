@@ -24,7 +24,7 @@ const ItemSidebar = ({ content, title, isDoubleItem, type, dispatch, navigate, l
 
     const handleFilterPosts = (code) => { 
         navigate({
-            pathname: location.pathname,
+            pathname: location?.pathname,
             search: createSearchParams({
               [type]: code,
             }).toString()

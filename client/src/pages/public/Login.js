@@ -18,7 +18,6 @@ const Login = ({ location, dispatch, navigate }) => {
    },[isLogged])
   const handleSubmitForm = async (data) => {
     // const response = await apiRegister(data)
-    console.log('data: ', data)
     if (isRegister) {
       const response = await apiRegister(data)
       if (response.err === 0) Swal.fire({
@@ -84,7 +83,7 @@ const Login = ({ location, dispatch, navigate }) => {
           fullWidth
         />
         <Button
-          style='bg-[#3961fb] flex justify-center font-semibold'
+          style='bg-[#3961fb] text-white flex justify-center font-semibold'
           fw
           type='submit'>
           {isRegister ? 'Đăng ký' : 'Đăng nhập'}
