@@ -5,12 +5,10 @@ import { useSelector, useDispatch } from "react-redux";
 import Modal from "./components/common/Modal";
 import { useEffect } from "react";
 import { getCategories } from "./store/app/asyncActions";
-import { getPosts, getPostsLimit } from "./store/post/asyncActions";
 import { getPrices } from "./store/prices/asyncActions";
 import { getAreas } from "./store/areas/asyncActions";
 import { getProvinces } from "./store/province/asyncActions";
-import { getCurrent } from "./store/user/asyncActions";
-
+import {CreatePost, System} from './pages/system'
 function App() {
 
   const dispatch = useDispatch()
@@ -41,6 +39,9 @@ function App() {
           <Route path={path.SEARCH} element={<SearchDetail />} />
           <Route path={path.DETAIL_POST__TITLE__POSTID} element={<DetailPost />} />
           <Route path={`${path.DETAIL_POST}/*`} element={<DetailPost />} />
+        </Route>
+        <Route path={path.SYSTEM} element={<System />}>
+            <Route path={path.CREATE_POST} element={<CreatePost />}/>
         </Route>
       </Routes>
     </div>

@@ -12,7 +12,10 @@ export const path = {
     CHO_THUE_MAT_BANG: 'cho-thue-mat-bang',
     DETAIL_POST__TITLE__POSTID: 'chi-tiet/:title/:postId',
     DETAIL_POST: 'chi-tiet',
-    SEARCH: 'tim-kiem'
+    SEARCH: 'tim-kiem',
+    SYSTEM: '/he-thong/*',
+    CREATE_POST: 'tao-bai-dang-moi'
+
 }
 
 
@@ -69,19 +72,19 @@ export const menuManage = [
     {
         id: 1,
         text: 'Đăng tin cho thuê',
-        path: '/quan-tri/tao-bai-dang-moi',
+        path: '/he-thong/tao-bai-dang-moi',
         icon: <ImPencil2 />
     },
     {
         id: 2,
         text: 'Quản lý tin đăng',
-        path: '/quan-tri/quan-ly-bai-dang',
+        path: '/he-thong/quan-ly-bai-dang',
         icon: <LuClipboardList />
     },
     {
         id: 3,
         text: 'Thông tin tài khoản',
-        path: '/quan-tri/thong-tin-tai-khoan',
+        path: '/he-thong/thong-tin-tai-khoan',
         icon: <FaClipboardUser />
     }
 ]

@@ -1,5 +1,5 @@
 import { FiPlusCircle } from 'react-icons/fi'
-import { BsChevronRight,BsBookmarkStarFill  } from 'react-icons/bs'
+import { BsChevronRight,BsBookmarkStarFill, BsChevronDown  } from 'react-icons/bs'
 import { IoMdCrop,IoMdSearch,IoIosStar,IoIosStarOutline, IoIosHeart, IoIosHeartEmpty, IoMdLogOut   } from 'react-icons/io'
 import { TbReportMoney } from 'react-icons/tb'
 import { MdOutlineOtherHouses } from 'react-icons/md'
@@ -11,6 +11,7 @@ import { LuClipboardList } from "react-icons/lu";
 const icons = {
     FiPlusCircle,
     BsChevronRight,
+    BsChevronDown,
     CiLocationOn,
     TbReportMoney,
     IoMdCrop,

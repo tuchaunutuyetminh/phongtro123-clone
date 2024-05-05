@@ -6,7 +6,7 @@ import { formatVietnameseToString } from '../../utils/helper'
 
 const notActive = 'hover:bg-secondary2 py-2 px-4'
 const active = 'hover:bg-secondary2 bg-secondary2 py-2 px-4'
-const Navigation = () => {
+const Navigation = ({isAdmin}) => {
     const { categoriesData } = useSelector(state => state.app)
 
     const [categories, setcategories] = useState([])
@@ -14,7 +14,7 @@ const Navigation = () => {
         setcategories(categoriesData)
     })
     return (
-        <div className='w-full flex justify-center items-center bg-secondary1 text-white'>
+        <div className={`w-full flex ${isAdmin ? 'justify-start' : 'justify-center'} items-center bg-secondary1 text-white h-full`}>
             <div className='w-3/5 flex items-start text-sm font-medium'>
                 <NavLink
                     className={({ isActive }) => isActive ? active : notActive}

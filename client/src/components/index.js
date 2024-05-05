@@ -23,6 +23,7 @@ export { default as Contact} from './footer/Contact'
 export { default as RelatedPost} from './relatedPost/RelatedPost'
 export { default as SmallItem} from './relatedPost/SmallItem'
 
+export { default as User} from './user/User'
 
 
 
