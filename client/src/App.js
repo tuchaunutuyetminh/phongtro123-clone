@@ -9,11 +9,12 @@ import { getPrices } from "./store/prices/asyncActions";
 import { getAreas } from "./store/areas/asyncActions";
 import { getProvinces } from "./store/province/asyncActions";
 import {CreatePost, System} from './pages/system'
+import { getCurrent } from "./store/user/asyncActions";
 function App() {
 
   const dispatch = useDispatch()
   const { isShowModal, modalChildren } = useSelector(state => state.app)
-  const { isLoggedIn } = useSelector(state => state.auth)
+  const { isLogged} = useSelector(state => state.auth)
 
   useEffect(() => {
     dispatch(getCategories())
@@ -23,7 +24,11 @@ function App() {
 
   }
     ,[])
-
+    useEffect(() => { 
+      setTimeout(() => { 
+        isLogged && dispatch(getCurrent())
+       }, 2000)
+     },[isLogged])
     
   return (
     <div className="w-screen bg-primary">

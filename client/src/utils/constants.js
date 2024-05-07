@@ -88,3 +88,30 @@ export const menuManage = [
         icon: <FaClipboardUser />
     }
 ]
+
+export const menuSidebar = [
+    {
+        id: 1,
+        text: 'Đăng tin cho thuê',
+        path: '/he-thong/tao-bai-dang-moi',
+        icon: <ImPencil2 />
+    },
+    {
+        id: 2,
+        text: 'Quản lý tin đăng',
+        path: '/he-thong/quan-ly-bai-dang',
+        icon: <LuClipboardList />
+    },
+    {
+        id: 3,
+        text: 'Sửa thông tin cá nhân',
+        path: '/he-thong/sua-thong-tin-ca-nhan',
+        icon: <FaClipboardUser />
+    },
+    {
+        id: 4,
+        text: 'Liên hệ',
+        path: '/he-thong/lien-he',
+        icon: <FaClipboardUser />
+    }
+]

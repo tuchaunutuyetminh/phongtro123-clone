@@ -9,7 +9,7 @@ const User = () => {
             <img src={currentData?.avatar || avatar} alt='avatar' className='w-10 object-cover rounded-full h-10 border-3 shadow-md border-white'/>
             <div className='flex flex-col'>
                 <span className='inline'>Xin chào, <span className='font-semibold '>{currentData?.name}</span></span>
-                <span className='inline-block'>Mã tài khoản: <span className='w-20 inline'>{`${currentData?.id?.slice(0,10)}...`}</span></span>
+                <span className='inline-block'>Mã tài khoản: <span className='w-20 inline'>{currentData?.id?.match(/\d/g).join('').slice(5,11)}</span></span>
             </div>
         </div>
     )

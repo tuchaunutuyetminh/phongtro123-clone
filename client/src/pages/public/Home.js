@@ -1,18 +1,13 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Outlet } from 'react-router-dom'
 import { Header, Navigation, Search, Intro, Contact } from '../../components'
 import { useSelector } from 'react-redux'
 import withBaseComponent from '../../hocs/withBaseComponent'
-import { getCurrent } from '../../store/user/asyncActions'
 
-const Home = ({dispatch}) => {
+const Home = () => {
   const { isLogged} = useSelector(state => state.auth)
   
-  useEffect(() => { 
-    setTimeout(() => { 
-      isLogged && dispatch(getCurrent())
-     }, 2000)
-   },[isLogged])
+  
   return (
     <div className='w-full h-full flex flex-col items-center gap-4'>
         <Header />
@@ -27,4 +22,4 @@ const Home = ({dispatch}) => {
   )
 }
 
-export default withBaseComponent(Home)
+export default Home
