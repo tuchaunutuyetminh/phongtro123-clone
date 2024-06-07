@@ -7,6 +7,8 @@ import { CiLocationOn } from 'react-icons/ci'
 import { FaArrowRight, FaArrowLeft, FaDeleteLeft, FaClipboardUser } from "react-icons/fa6";
 import {ImPencil2} from 'react-icons/im'
 import { LuClipboardList } from "react-icons/lu";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { BsCameraFill } from 'react-icons/bs'
 
 const icons = {
     FiPlusCircle,
@@ -28,7 +30,9 @@ const icons = {
     ImPencil2,
     LuClipboardList,
     FaClipboardUser,
-    IoMdLogOut
+    IoMdLogOut,
+    RiDeleteBin6Line,
+    BsCameraFill
 }
 
 export default icons

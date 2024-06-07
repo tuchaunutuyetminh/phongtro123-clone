@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { ItemSidebar, List, Pagination, Province, RelatedPost } from '../../components'
+import React from 'react'
+import { ItemSidebar, List, Pagination, RelatedPost } from '../../components'
 import withBaseComponent from '../../hocs/withBaseComponent'
 import { useSelector } from 'react-redux'
 

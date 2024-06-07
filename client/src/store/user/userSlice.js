@@ -4,12 +4,12 @@ import * as actions from './asyncActions'
 export const userSlice = createSlice({
   name: 'user',
   initialState: {
-    currentData: {}
+    currentData: {},
+    msg: ''
   },
   reducers: {
     // login: (state, action) => {
-    //   state.isLoggedIn = action.payload.isLoggedIn
-    //   state.token = action.payload.token
+    //   state.currentData = 
     // },
     resetCurrent: (state, action) => {
       state.currentData = {}
@@ -41,7 +41,9 @@ export const userSlice = createSlice({
 
     builder.addCase(actions.getCurrent.rejected, (state, action) => {
       state.isLoading = false;
-      state.currentData = {}
+      state.currentData = null;
+      state.msg = action.payload.msg
+
     });
   },
 })

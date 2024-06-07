@@ -52,6 +52,7 @@ const Login = ({ location, dispatch, navigate }) => {
           register={register}
           errors={errors}
           id='name'
+          style='bg-[#e8f0fe]'
           validate={{ required: 'Vui lòng nhập họ tên của bạn.' }}
           fullWidth
         />}
@@ -59,6 +60,7 @@ const Login = ({ location, dispatch, navigate }) => {
           label='SỐ ĐIỆN THOẠI'
           register={register}
           errors={errors}
+          style='bg-[#e8f0fe]'
           id='phone'
           validate={{
             required: 'Vui lòng nhập số điện thoại của bạn.', pattern: {
@@ -71,6 +73,7 @@ const Login = ({ location, dispatch, navigate }) => {
         <InputForm
           label='MẬT KHẨU'
           type='password'
+          style='bg-[#e8f0fe]'
           register={register}
           errors={errors}
           id='password'

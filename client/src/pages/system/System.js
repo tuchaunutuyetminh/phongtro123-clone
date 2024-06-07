@@ -8,7 +8,7 @@ const System = () => {
 
   if(!isLogged) return <Navigate to={`/${path.LOGIN}`} replace={true}/>
   return (
-    <div className=' w-full h-screen flex flex-col items-center'>
+    <div className=' w-full flex flex-col items-center'>
       <HeaderSystem />
       <div className='flex w-full min-h-screen flex-auto'>
         <Sidebar />

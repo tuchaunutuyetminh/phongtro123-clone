@@ -1,5 +1,7 @@
 export { default as Header} from './common/Header'
 export { default as Modal} from './common/Modal'
+export { default as Loading} from './common/Loading'
+
 export { default as PopupFilter} from './search/PopupFilter'
 
 export { default as Province} from './province/Province'

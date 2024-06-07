@@ -14,7 +14,7 @@ import authSlice from './auth/authSlice';
 import appSlice from './app/appSlice';
 import postSlice from './post/postSlice';
 import  pricesSlice  from './prices/pricesSlice';
-import  areaSLice from './areas/pricesSlice';
+import  areaSLice from './areas/areasSlice';
 import provinceSlice from './province/provinceSlice';
 import userSlice from './user/userSlice';
 

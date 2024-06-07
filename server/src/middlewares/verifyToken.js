@@ -10,7 +10,7 @@ const verifyToken = (req, res, next) => {
     jwt.verify(accessToken, process.env.SECRET_KEY, (err, user) => { 
         if(err) return res.status(401).json({
             err: 1,
-            msg: 'Access token expire.'
+            msg: 'Phiên đã hết hạn.Vui lòng đăng nhập lại.'
         })
 
         req.user = user
