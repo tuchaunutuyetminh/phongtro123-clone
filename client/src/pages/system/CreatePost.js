@@ -6,6 +6,7 @@ import Swal from 'sweetalert2'
 import { Button, Loading } from '../../components'
 import { useSelector } from 'react-redux'
 import { getCodesArea, getCodesPrice } from '../../utils/getCode'
+import { current } from '@reduxjs/toolkit'
 
 const { RiDeleteBin6Line, BsCameraFill } = icons
 const CreatePost = () => {
@@ -27,6 +28,12 @@ const CreatePost = () => {
   const [isLoading, setIsLoading] = useState(false)
   const { areas} = useSelector(state => state.areas)
   const { prices} = useSelector(state => state.prices)
+  const { categoriesData} = useSelector(state => state.app)
+  const { provinces} = useSelector(state => state.provinces)
+
+  
+  const { currentData } = useSelector(state => state.user)
+
 
   const handleFiles = async (e) => {
     e.stopPropagation();
@@ -71,13 +78,20 @@ const CreatePost = () => {
   }
 
   const handleSubmit = () => {
-    let priceCodeArr = getCodesPrice(+payload.priceNumber, prices, 1, 15)
+    let priceCodeArr = getCodesPrice(+payload.priceNumber / Math.pow(10, 6), prices, 1, 15)
     let priceCode = priceCodeArr[0]?.code
 
     let areaCodeArr = getCodesArea(+payload.areaNumber, areas, 1, 90)
     let areaCode = areaCodeArr[0]?.code
 
-    let finalPayload = {...payload, areaCode, priceCode}
+    let finalPayload = {
+      ...payload, 
+      areaCode, 
+      priceCode: +payload.priceNumber / Math.pow(10, 6), 
+      userId: currentData.id,
+      target: payload.target || 'Tất cả',
+      label: `${categoriesData?.find(item => item.code === payload?.categoryCode)?.value} ${payload?.address?.split(',')[0]} `
+    }
 
     console.log(finalPayload)
   }

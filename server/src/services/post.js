@@ -1,6 +1,9 @@
 import { where } from 'sequelize'
 import db from '../models'
+import {v4 as generateId} from 'uuid'
+import generateCode from '../utils/generateCode'
 const {Op} = require('sequelize')
+
 export const getPostsService = () => new Promise(async (resolve, reject) => {
     try {
         const response = await db.Post.findAll({
@@ -80,3 +83,47 @@ export const getNewPostsService = () => new Promise(async (resolve, reject) => {
         reject(error)
     }
 })
+
+export const createNewPostsService = (body, userId) => new Promise(async (resolve, reject) => {
+
+    try {
+        const attributesId = generateId()
+        const imagesId = generateId()
+        const overviewId = generateId()
+        const labelCode = generateCode(body.label)
+        await db.Attribute.create
+        const response = await db.Post.create({
+            id: generateId(),
+            title: body.title,
+            labelCode,
+            address: body.address || null,
+            attributesId,
+            categoryCode: body.categoryCode,
+            description: body.description || null,
+            userId,
+            overviewId,
+            imagesId,
+            areaCode: body.areaCode || null,
+            priceCode: body.priceCode || null,
+            provinceCode: body.provinceCode || null,
+            priceNumber: body.priceNumber,
+            areaNumber: body.areaNumber
+        })
+        await db.Attribute.create({
+            id: attributesId,
+            price: +body.priceNumber < 1 ? `${+body.priceNumber * Math.pow(10,6)} đồng/tháng` : `${body.priceNumber} triệu/tháng`,
+            acreage: `${body.areaNumber} m2`,
+            published: item?.header?.attributes?.published,
+            hashtag: item?.header?.attributes?.hashtag,
+        })
+        resolve({
+            err: response ? 0 : 1,
+            msg: response ? 'Ok' : 'Lấy bài đăng bị lỗi.',
+            response
+        })
+    } catch (error) {
+        reject(error)
+    }
+})
+
+
