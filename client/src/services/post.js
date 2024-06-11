@@ -23,5 +23,11 @@ export const apiUploadImages = (images) => axios({
 })
 
 
+export const apiCreatePost = (data) => axiosConfig({
+    url: `post/create-new`,
+    method: 'post',
+    data
+})
+
 
 

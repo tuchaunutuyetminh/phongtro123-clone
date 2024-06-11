@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Address, Overview } from '../../components/system'
-import { apiUploadImages } from '../../services/post'
+import { apiCreatePost, apiUploadImages } from '../../services/post'
 import icons from '../../utils/icons'
 import Swal from 'sweetalert2'
 import { Button, Loading } from '../../components'
@@ -26,12 +26,12 @@ const CreatePost = () => {
   })
   const [imagesPreview, setImagesPreview] = useState([])
   const [isLoading, setIsLoading] = useState(false)
-  const { areas} = useSelector(state => state.areas)
-  const { prices} = useSelector(state => state.prices)
-  const { categoriesData} = useSelector(state => state.app)
-  const { provinces} = useSelector(state => state.provinces)
+  const { areas } = useSelector(state => state.areas)
+  const { prices } = useSelector(state => state.prices)
+  const { categoriesData } = useSelector(state => state.app)
+  const { provinces } = useSelector(state => state.provinces)
 
-  
+
   const { currentData } = useSelector(state => state.user)
 
 
@@ -77,23 +77,52 @@ const CreatePost = () => {
 
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     let priceCodeArr = getCodesPrice(+payload.priceNumber / Math.pow(10, 6), prices, 1, 15)
     let priceCode = priceCodeArr[0]?.code
 
-    let areaCodeArr = getCodesArea(+payload.areaNumber, areas, 1, 90)
+    let areaCodeArr = getCodesArea(+payload.areaNumber, areas, 20, 90)
     let areaCode = areaCodeArr[0]?.code
 
     let finalPayload = {
-      ...payload, 
-      areaCode, 
-      priceCode: +payload.priceNumber / Math.pow(10, 6), 
+      ...payload,
+      areaCode,
+      priceCode,
+      priceNumber: +payload.priceNumber / Math.pow(10, 6),
       userId: currentData.id,
       target: payload.target || 'Tất cả',
       label: `${categoriesData?.find(item => item.code === payload?.categoryCode)?.value} ${payload?.address?.split(',')[0]} `
     }
 
-    console.log(finalPayload)
+    const response = await apiCreatePost(finalPayload)
+    if (response?.err === 0) {
+      Swal.fire({
+        title: 'Thành công',
+        text: 'Đã thêm bài đăng mới',
+        icon: 'success'
+      }).then((rs) => {
+        if (rs.isConfirmed) setPayload({
+          categoryCode: '',
+          title: '',
+          priceNumber: 0,
+          areaNumber: 0,
+          images: '',
+          address: '',
+          priceCode: '',
+          areaCode: '',
+          description: '',
+          target: '',
+          province: ''
+        })
+      })
+    } else {
+      Swal.fire({
+        title: 'Oops!',
+        text: 'Có lỗi gì đó!',
+        icon: 'error'
+      })
+    }
+
   }
   return (
     <div className='px-6'>
