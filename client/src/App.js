@@ -34,7 +34,7 @@ function App() {
     !currentData && dispatch(logout())
   }, [currentData])
   return (
-    <div className="w-screen bg-primary">
+    <div className="w-screen bg-primary overflow-hidden">
       {isShowModal && <Modal>{modalChildren}</Modal>}
       <Routes>
         <Route path={path.HOME} element={<Home />}>

@@ -21,7 +21,7 @@ const Item = ({item, navigate}) => {
                 {JSON.parse(images.image).length > 0 && JSON.parse(images.image).filter((i, index) => indexs.some(i => i === index))?.map((img, index) => (
                     <img key={index} src={img} alt='preview' className='w-[47%] h-[120px] object-cover' />
                 ))}
-                <span className="bg-overlay text-[13px] text-white px-2 rounded-md absolute left-1 bottom-1">{`${images?.image?.length} ảnh`}</span>
+                <span className="bg-overlay text-[13px] text-white px-2 rounded-md absolute left-1 bottom-1">{`${JSON.parse(images.image).length} ảnh`}</span>
                 <span 
                     onMouseEnter={() => setIsHoverHeart(true)}
                     onMouseLeave={() => setIsHoverHeart(false)}

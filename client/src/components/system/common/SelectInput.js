@@ -1,8 +1,12 @@
 import React, { memo } from 'react'
 
-const SelectInput = ({label,name,isPayload, options,reset, value, setValue, type}) => {
+const SelectInput = ({label,name,isPayload, options,reset, value, setValue, type, invalidFields}) => {
 
 
+  const handleErrorText = () => { 
+    let textError = ''
+    return textError
+   }
   return (
     <div className='flex flex-col gap-2 flex-1'>
       <label className='font-medium' htmlFor='select-address'>{label}</label>
@@ -20,6 +24,7 @@ const SelectInput = ({label,name,isPayload, options,reset, value, setValue, type
             key={type === 'province' ? item.province_id :  type === 'district' ? item.district_id : item?.code}>{type === 'province' ? item.province_name : type === 'district' ? item.district_name : item?.value}</option>
         ))}
       </select>
+      {/* { && <small className='text-red-500'>{invalidFields?.find(item => item.name === name)?.message || invalidFields?.some(item => item.name === "address")?.message}</small>}  */}
     </div>
   )
 }

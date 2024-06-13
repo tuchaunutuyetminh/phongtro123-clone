@@ -6,8 +6,7 @@ import Swal from 'sweetalert2'
 import { Button, Loading } from '../../components'
 import { useSelector } from 'react-redux'
 import { getCodesArea, getCodesPrice } from '../../utils/getCode'
-import { current } from '@reduxjs/toolkit'
-
+import {validate} from '../../utils/helper'
 const { RiDeleteBin6Line, BsCameraFill } = icons
 const CreatePost = () => {
 
@@ -26,6 +25,7 @@ const CreatePost = () => {
   })
   const [imagesPreview, setImagesPreview] = useState([])
   const [isLoading, setIsLoading] = useState(false)
+  const [invalidFields,setInvalidFields] = useState([])
   const { areas } = useSelector(state => state.areas)
   const { prices } = useSelector(state => state.prices)
   const { categoriesData } = useSelector(state => state.app)
@@ -94,34 +94,38 @@ const CreatePost = () => {
       label: `${categoriesData?.find(item => item.code === payload?.categoryCode)?.value} ${payload?.address?.split(',')[0]} `
     }
 
-    const response = await apiCreatePost(finalPayload)
-    if (response?.err === 0) {
-      Swal.fire({
-        title: 'Thành công',
-        text: 'Đã thêm bài đăng mới',
-        icon: 'success'
-      }).then((rs) => {
-        if (rs.isConfirmed) setPayload({
-          categoryCode: '',
-          title: '',
-          priceNumber: 0,
-          areaNumber: 0,
-          images: '',
-          address: '',
-          priceCode: '',
-          areaCode: '',
-          description: '',
-          target: '',
-          province: ''
-        })
-      })
-    } else {
-      Swal.fire({
-        title: 'Oops!',
-        text: 'Có lỗi gì đó!',
-        icon: 'error'
-      })
-    }
+    const resultValidate = validate(payload, setInvalidFields)
+    console.log(resultValidate)
+    console.log(invalidFields)
+
+    // const response = await apiCreatePost(finalPayload)
+    // if (response?.err === 0) {
+    //   Swal.fire({
+    //     title: 'Thành công',
+    //     text: 'Đã thêm bài đăng mới',
+    //     icon: 'success'
+    //   }).then((rs) => {
+    //     if (rs.isConfirmed) setPayload({
+    //       categoryCode: '',
+    //       title: '',
+    //       priceNumber: 0,
+    //       areaNumber: 0,
+    //       images: '',
+    //       address: '',
+    //       priceCode: '',
+    //       areaCode: '',
+    //       description: '',
+    //       target: '',
+    //       province: ''
+    //     })
+    //   })
+    // } else {
+    //   Swal.fire({
+    //     title: 'Oops!',
+    //     text: 'Có lỗi gì đó!',
+    //     icon: 'error'
+    //   })
+    // }
 
   }
   return (
@@ -129,8 +133,8 @@ const CreatePost = () => {
       <h1 className='text-3xl font-medium py-4 border-b border-gray'>Đăng tin mới</h1>
       <div className='flex gap-4'>
         <div className='py-4 flex flex-col gap-8 flex-auto'>
-          <Address payload={payload} setPayload={setPayload} />
-          <Overview payload={payload} setPayload={setPayload} />
+          <Address invalidFields={invalidFields} payload={payload} setPayload={setPayload} />
+          <Overview invalidFields={invalidFields} payload={payload} setPayload={setPayload} />
           <div className='w-full'>
             <h2 className='font-semibold text-xl py-4'>Hình ảnh</h2>
             <small>Cập nhật hình ảnh rõ ràng sẽ cho thuê nhanh hơn</small>

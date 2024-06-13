@@ -10,9 +10,9 @@ const System = () => {
   return (
     <div className=' w-full flex flex-col items-center'>
       <HeaderSystem />
-      <div className='flex w-full min-h-screen flex-auto'>
+      <div className='flex w-full h-screen flex-auto'>
         <Sidebar />
-        <div className='flex-auto bg-white p-4'>
+        <div className='flex-auto bg-white p-4 overflow-y-scroll'>
         <Outlet />
         </div>
       </div>
